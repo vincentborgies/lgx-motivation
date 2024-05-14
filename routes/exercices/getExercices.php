@@ -8,9 +8,11 @@ use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$app->get('/getExercices', function (Request $request, Response $response) use ($database, $key) {
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$app->get('/getExercices', function (Request $request, Response $response)  use ($database, $key){
     // Retrieve the user ID from request attributes
-    $userId = $request->getAttribute('id');
+    $userId = $request->getAttribute('user');
 
     require 'db.php';
 

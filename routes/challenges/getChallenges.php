@@ -8,11 +8,13 @@ use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$app->get('/challenges/daily', function (Request $request, Response $response) {
-    // Retrieve the user ID from request attributes
-    $userId = $request->getAttribute('id');
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-    require 'db.php';
+$app->get('/challengesDaily', function (Request $request, Response $response) use ($database, $key) {
+    // Retrieve the user ID from request attributes
+    $userId = $request->getAttribute('user');
+
+    require_once 'db.php';
 
     $query = 'SELECT `id`, `image`, `description` 
             FROM `challenges`
@@ -23,7 +25,7 @@ $app->get('/challenges/daily', function (Request $request, Response $response) {
     $dailyChallengeInfo = $queryexec->fetchAll(PDO::FETCH_ASSOC);
 
     if ($dailyChallengeInfo) {
-        $response->getBody()->write(json_encode($userProfile));
+        $response->getBody()->write(json_encode($dailyChallengeInfo));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     } else {
         $response->getBody()->write(json_encode(['erreur' => 'Challenge quotidien non trouvé']));

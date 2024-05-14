@@ -61,6 +61,7 @@ $checkAdmin = function($request,$handler)use ($key){
 };
 
 
+
 require_once __DIR__ . '/routes/admin/postAdmin.php';
 
 require_once __DIR__ . '/routes/user/postUser.php';
@@ -75,6 +76,7 @@ require_once __DIR__ . '/routes/exercices/postExercices.php';
 require_once __DIR__ . '/routes/challenges/getChallenges.php';
 
 
+require_once __DIR__ . '/routes/messages/postMessages.php';
 
 
 $app->run();

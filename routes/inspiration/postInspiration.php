@@ -8,7 +8,9 @@ use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$app->post('/addInspiration', function (Request $request, Response $response) use ($database, $key) {
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$app->post('/addInspiration', function (Request $request, Response $response)  use ($database, $key){
     $err = array();
     require 'db.php';
     
