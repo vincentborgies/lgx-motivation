@@ -8,9 +8,11 @@ use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$app->post('/namegroupe', function (Request $request, Response $response)  use ($database, $key){
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$app->post('/namegroupe', function (Request $request, Response $response)  use ($database, $key) {
     $data = $request->getParsedBody();
-    $userId = $request->getAttribute('id');
+    $userId = $request->getAttribute('user');
 
     require_once 'db.php';
 
@@ -28,7 +30,7 @@ $app->post('/namegroupe', function (Request $request, Response $response)  use (
         return $response->withHeader('Content-Type', 'application/json')->withStatus(404);
     }
 })->add($testAuth);
-$app->post('/addMessage', function (Request $request, Response $response) {
+$app->post('/addMessage', function (Request $request, Response $response)  use ($database, $key) {
     $data = $request->getParsedBody();
    $err = array();
    require_once 'db.php';
@@ -71,9 +73,10 @@ $app->post('/addMessage', function (Request $request, Response $response) {
    }
 
 })->add($testAuth);
-$app->post('/messagegroupe', function (Request $request, Response $response) {
+
+$app->post('/messagegroupe', function (Request $request, Response $response)  use ($database, $key) {
     $data = $request->getParsedBody();
-    $userId = $request->getAttribute('id');
+    $userId = $request->getAttribute('user');
 
     require_once 'db.php';
 
