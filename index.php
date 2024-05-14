@@ -2,6 +2,7 @@
 //Récupérer les dépendances
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -33,7 +34,8 @@ $testAuth = function($request,$handler)use ($key){
     ];
 
     $request = $request->withAttribute('user',$userDatas);
-    return $response = $handler->handle($request);
+
+    return $handler->handle($request);
 };
 
 $checkAdmin = function($request,$handler)use ($key){

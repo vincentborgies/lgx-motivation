@@ -28,7 +28,7 @@ $app->post('/addExercices', function (Request $request, Response $response)  use
 
     if (empty($err)) {
         $image = $uploadedFiles['image'];
-        $uploadPath = __DIR__ . '/uploads'; // Chemin de téléchargement des images
+        $uploadPath = __DIR__ . '/../../uploads'; // Chemin de téléchargement des images
         $filename = uniqid() . '-' . $image->getClientFilename();
         
         // Déplacez le fichier téléchargé vers le dossier d'uploads

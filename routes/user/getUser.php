@@ -1,8 +1,9 @@
 <?php
 
-require_once 'db.php'; // Inclure le fichier db.php où tu as créé l'instance de PDO
+require_once 'db.php'; 
 
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
