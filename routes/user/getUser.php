@@ -17,7 +17,7 @@ $app->get('/profil', function (Request $request, Response $response)  use ($data
 
     require_once 'db.php';
 
-    $query = 'SELECT `id`, `email`, `nom` FROM `user` WHERE `id` = ?';
+    $query = 'SELECT `id`, `email`, `nom`, `idgroupe` FROM `user` WHERE `id` = ?';
     $queryexec = $database->prepare($query);
     $queryexec->bindValue(1, $userId, PDO::PARAM_INT);
     $queryexec->execute();
