@@ -10,22 +10,25 @@ use Firebase\JWT\Key;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$app->get('/getExercices', function (Request $request, Response $response)  use ($database, $key){
+$app->get('/challenges/daily', function (Request $request, Response $response) use ($database, $key) {
     // Retrieve the user ID from request attributes
     $userId = $request->getAttribute('id');
 
     require 'db.php';
 
-    $query = 'SELECT `id`, `image`, `description`, `time` FROM `exercices`';
+    $query = 'SELECT `id`, `image`, `description` 
+            FROM `challenges`
+            WHERE periode = 1';
+
     $queryexec = $database->prepare($query);
     $queryexec->execute();
-    $userProfile = $queryexec->fetchAll(PDO::FETCH_ASSOC);
+    $dailyChallengeInfo = $queryexec->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($userProfile) {
+    if ($dailyChallengeInfo) {
         $response->getBody()->write(json_encode($userProfile));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     } else {
-        $response->getBody()->write(json_encode(['erreur' => 'Inspiration non trouvé']));
+        $response->getBody()->write(json_encode(['erreur' => 'Challenge quotidien non trouvé']));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(404);
     }
 })->add($testAuth);

@@ -70,10 +70,11 @@ require_once __DIR__ . '/routes/inspiration/postInspiration.php';
 require_once __DIR__ . '/routes/exercices/getExercices.php';
 require_once __DIR__ . '/routes/exercices/postExercices.php';
 
+require_once __DIR__ . '/routes/challenges/getChallenges.php';
+
+
 
 require_once __DIR__ . '/routes/messages/postMessages.php';
-
-
 
 
 

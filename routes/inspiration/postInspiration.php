@@ -1,7 +1,16 @@
 <?php
 
+require_once 'db.php'; // Inclure le fichier db.php où tu as créé l'instance de PDO
 
-$app->post('/addInspiration', function (Request $request, Response $response) {
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$app->post('/addInspiration', function (Request $request, Response $response)  use ($database, $key){
     $err = array();
     require 'db.php';
     
