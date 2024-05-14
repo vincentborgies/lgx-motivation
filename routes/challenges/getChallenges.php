@@ -8,6 +8,8 @@ use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 $app->get('/challenges/daily', function (Request $request, Response $response) {
     // Retrieve the user ID from request attributes
     $userId = $request->getAttribute('id');

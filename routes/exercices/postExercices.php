@@ -8,6 +8,8 @@ use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 $app->post('/addExercices', function (Request $request, Response $response) {
     $err = array();
     require 'db.php';
