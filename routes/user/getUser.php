@@ -10,7 +10,7 @@ use Firebase\JWT\Key;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$app->get('/profil', function (Request $request, Response $response) {
+$app->get('/profil', function (Request $request, Response $response)  use ($database, $key){
     // Retrieve the user ID from request attributes
     $userId = $request->getAttribute('id');
 

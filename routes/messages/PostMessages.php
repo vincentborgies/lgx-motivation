@@ -8,7 +8,7 @@ use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$app->post('/namegroupe', function (Request $request, Response $response) {
+$app->post('/namegroupe', function (Request $request, Response $response)  use ($database, $key){
     $data = $request->getParsedBody();
     $userId = $request->getAttribute('id');
 
