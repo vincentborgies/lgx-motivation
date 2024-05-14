@@ -12,9 +12,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 $app->get('/profil', function (Request $request, Response $response)  use ($database, $key){
     // Retrieve the user ID from request attributes
-    $userId = $request->getAttribute('id');
+    $userId = $request->getAttribute('user');
 
-    require 'db.php';
+    require_once 'db.php';
 
     $query = 'SELECT `id`, `email`, `nom` FROM `user` WHERE `id` = ?';
     $queryexec = $database->prepare($query);
