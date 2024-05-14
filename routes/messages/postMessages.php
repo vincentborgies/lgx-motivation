@@ -12,7 +12,6 @@ $app->post('/namegroupe', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     $userId = $request->getAttribute('id');
 
-    
     require 'db.php';
 
     $query = 'SELECT `id`, `nom` FROM `groupe_discussion` WHERE `id` = ?';
