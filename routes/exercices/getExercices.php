@@ -8,7 +8,7 @@ use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$app->get('/getExercices', function (Request $request, Response $response) {
+$app->get('/getExercices', function (Request $request, Response $response) use ($database, $key) {
     // Retrieve the user ID from request attributes
     $userId = $request->getAttribute('id');
 
