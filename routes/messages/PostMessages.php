@@ -12,7 +12,7 @@ $app->post('/namegroupe', function (Request $request, Response $response)  use (
     $data = $request->getParsedBody();
     $userId = $request->getAttribute('id');
 
-    require 'db.php';
+    require_once 'db.php';
 
     $query = 'SELECT `id`, `nom` FROM `groupe_discussion` WHERE `id` = ?';
     $queryexec = $database->prepare($query);
@@ -31,7 +31,7 @@ $app->post('/namegroupe', function (Request $request, Response $response)  use (
 $app->post('/addMessage', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
    $err = array();
-   require 'db.php';
+   require_once 'db.php';
 
   
    if(empty($data['idemetteur'])){
@@ -75,7 +75,7 @@ $app->post('/messagegroupe', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     $userId = $request->getAttribute('id');
 
-    require 'db.php';
+    require_once 'db.php';
 
     $query = 'SELECT * FROM `message_discussion` WHERE `idgroupe` = ?';
     $queryexec = $database->prepare($query);
