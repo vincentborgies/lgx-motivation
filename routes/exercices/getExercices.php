@@ -14,7 +14,7 @@ $app->get('/getExercices', function (Request $request, Response $response)  use 
     // Retrieve the user ID from request attributes
     $userId = $request->getAttribute('user');
 
-    require 'db.php';
+    require_once 'db.php';
 
     $query = 'SELECT `id`, `image`, `description`, `time` FROM `exercices`';
     $queryexec = $database->prepare($query);
