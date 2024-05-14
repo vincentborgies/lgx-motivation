@@ -14,7 +14,7 @@ $app->get('/getInspiration', function (Request $request, Response $response) use
     // Retrieve the user ID from request attributes
     $userId = $request->getAttribute('id');
 
-    require 'db.php';
+    require_once 'db.php';
 
     $query = 'SELECT `id`, `image`, `etiquette` FROM `inspirations`';
     $queryexec = $database->prepare($query);
