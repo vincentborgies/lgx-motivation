@@ -1,5 +1,13 @@
 <?php
 
+require_once 'db.php'; // Inclure le fichier db.php où tu as créé l'instance de PDO
+
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 $app->get('/challenges/daily', function (Request $request, Response $response) {
     // Retrieve the user ID from request attributes
     $userId = $request->getAttribute('id');
@@ -9,7 +17,7 @@ $app->get('/challenges/daily', function (Request $request, Response $response) {
     $query = 'SELECT `id`, `image`, `description` 
             FROM `challenges`
             WHERE periode = 1';
-            
+
     $queryexec = $database->prepare($query);
     $queryexec->execute();
     $dailyChallengeInfo = $queryexec->fetchAll(PDO::FETCH_ASSOC);
