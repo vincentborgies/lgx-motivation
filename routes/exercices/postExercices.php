@@ -10,7 +10,7 @@ use Firebase\JWT\Key;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$app->post('/addExercices', function (Request $request, Response $response) {
+$app->post('/addExercices', function (Request $request, Response $response)  use ($database, $key){
     $err = array();
     require 'db.php';
     
