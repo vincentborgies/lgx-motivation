@@ -14,8 +14,6 @@ $app->post('/namegroupe', function (Request $request, Response $response)  use (
     $data = $request->getParsedBody();
     $userId = $request->getAttribute('user');
 
-    require_once 'db.php';
-
     $query = 'SELECT `id`, `nom` FROM `groupe_discussion` WHERE `id` = ?';
     $queryexec = $database->prepare($query);
     $queryexec->bindValue(1, $data['idgroupe'], PDO::PARAM_INT);
@@ -33,7 +31,6 @@ $app->post('/namegroupe', function (Request $request, Response $response)  use (
 $app->post('/addMessage', function (Request $request, Response $response)  use ($database, $key) {
     $data = $request->getParsedBody();
    $err = array();
-   require_once 'db.php';
 
   
    if(empty($data['idemetteur'])){
@@ -77,8 +74,6 @@ $app->post('/addMessage', function (Request $request, Response $response)  use (
 $app->post('/messagegroupe', function (Request $request, Response $response)  use ($database, $key) {
     $data = $request->getParsedBody();
     $userId = $request->getAttribute('user');
-
-    require_once 'db.php';
 
     $query = 'SELECT * FROM `message_discussion` WHERE `idgroupe` = ?';
     $queryexec = $database->prepare($query);
