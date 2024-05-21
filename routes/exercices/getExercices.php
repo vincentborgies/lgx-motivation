@@ -12,9 +12,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 $app->get('/getExercices', function (Request $request, Response $response)  use ($database, $key){
     // Retrieve the user ID from request attributes
-    $userId = $request->getAttribute('id');
+    $userId = $request->getAttribute('user');
 
-    require 'db.php';
+    require_once 'db.php';
 
     $query = 'SELECT `id`, `image`, `description`, `time` FROM `exercices`';
     $queryexec = $database->prepare($query);

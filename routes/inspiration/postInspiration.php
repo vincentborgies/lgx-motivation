@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 $app->post('/addInspiration', function (Request $request, Response $response)  use ($database, $key){
     $err = array();
-    require 'db.php';
+    require_once 'db.php';
     
     $uploadedFiles = $request->getUploadedFiles();
     $data = $request->getParsedBody();
@@ -28,12 +28,11 @@ $app->post('/addInspiration', function (Request $request, Response $response)  u
 
     if (empty($err)) {
         $image = $uploadedFiles['image'];
-        $uploadPath = __DIR__ . '/uploads'; // Chemin de téléchargement des images
+        $uploadPath = __DIR__ . '/../../uploads'; // Chemin de téléchargement des images
         $filename = uniqid() . '-' . $image->getClientFilename();
-        
+    
         // Déplacez le fichier téléchargé vers le dossier d'uploads
         $image->moveTo($uploadPath . DIRECTORY_SEPARATOR . $filename);
-
         // Insérer le chemin du fichier dans la base de données
         $query = 'INSERT INTO `inspirations` (`image`,`etiquette`) VALUES(?,?)';
         $queryexec = $database->prepare($query);

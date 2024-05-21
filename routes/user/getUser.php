@@ -1,8 +1,9 @@
 <?php
 
-require_once 'db.php'; // Inclure le fichier db.php où tu as créé l'instance de PDO
+require_once 'db.php'; 
 
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Firebase\JWT\JWT;
@@ -12,11 +13,11 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 $app->get('/profil', function (Request $request, Response $response)  use ($database, $key){
     // Retrieve the user ID from request attributes
-    $userId = $request->getAttribute('id');
+    $userId = $request->getAttribute('user');
 
-    require 'db.php';
+    require_once 'db.php';
 
-    $query = 'SELECT `id`, `email`, `nom` FROM `user` WHERE `id` = ?';
+    $query = 'SELECT `id`, `email`, `nom`, `idgroupe` FROM `user` WHERE `id` = ?';
     $queryexec = $database->prepare($query);
     $queryexec->bindValue(1, $userId, PDO::PARAM_INT);
     $queryexec->execute();
