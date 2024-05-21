@@ -9,7 +9,7 @@ use Firebase\JWT\Key;
 
 
 //Récupération de l'autoload
-require __DIR__ .'/vendor/autoload.php';
+require_once __DIR__ .'/vendor/autoload.php';
 //instance d'app slim
 $app = AppFactory::create();
 $app->addBodyParsingMiddleware();
@@ -76,7 +76,7 @@ require_once __DIR__ . '/routes/exercices/postExercices.php';
 require_once __DIR__ . '/routes/challenges/getChallenges.php';
 
 
-require_once __DIR__ . '/routes/messages/postMessages.php';
+//require_once __DIR__ . '/routes/messages/postMessages.php';
 
 
 $app->run();

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db.php'; // Inclure le fichier db.php où tu as créé l'instance de PDO
+require_once __DIR__.'/../../db.php'; // Inclure le fichier db.php où tu as créé l'instance de PDO
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

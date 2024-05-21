@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db.php'; // Inclure le fichier db.php où tu as créé l'instance de PDO
+require_once __DIR__.'/../../db.php'; // Inclure le fichier db.php où tu as créé l'instance de PDO
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -12,9 +12,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 $app->get('/getInspiration', function (Request $request, Response $response) use ($database, $key) {
     // Retrieve the user ID from request attributes
-    $userId = $request->getAttribute('id');
+    $userId = $request->getAttribute('user');
 
-    require_once 'db.php';
+    require_once __DIR__.'/../../db.php';
 
     $query = 'SELECT `id`, `image`, `etiquette` FROM `inspirations`';
     $queryexec = $database->prepare($query);

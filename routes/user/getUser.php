@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db.php'; 
+require_once __DIR__.'/../../db.php'; 
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
@@ -14,8 +14,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 $app->get('/profil', function (Request $request, Response $response)  use ($database, $key){
     // Retrieve the user ID from request attributes
     $userId = $request->getAttribute('user');
-
-    require_once 'db.php';
 
     $query = 'SELECT `id`, `email`, `nom`, `idgroupe` FROM `user` WHERE `id` = ?';
     $queryexec = $database->prepare($query);

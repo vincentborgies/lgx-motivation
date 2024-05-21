@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 $app->post('/addInspiration', function (Request $request, Response $response)  use ($database, $key){
     $err = array();
-    require_once 'db.php';
+    require_once __DIR__.'/../../db.php';
     
     $uploadedFiles = $request->getUploadedFiles();
     $data = $request->getParsedBody();
