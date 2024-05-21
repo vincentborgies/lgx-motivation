@@ -76,10 +76,6 @@ require_once __DIR__ . '/routes/exercices/postExercices.php';
 require_once __DIR__ . '/routes/challenges/getChallenges.php';
 
 
-require_once __DIR__ . '/routes/messages/postMessages.php';
-
-
-
 $app->post('/namegroupe', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
 
